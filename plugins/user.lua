@@ -44,10 +44,10 @@ return {
   -- Disabel standart plugin
   { "goolord/alpha-nvim", enabled = true },
 
-  {
-    'Exafunction/codeium.vim',
-    event = 'BufEnter'
-  },
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = 'BufEnter'
+  -- },
 
   { "Mofiqul/dracula.nvim" },
   { "EdenEast/nightfox.nvim" },

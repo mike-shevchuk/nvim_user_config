@@ -17,8 +17,12 @@ return {
     },
   },
 
-  -- Set colorscheme to use
-  colorscheme = "astrodark",
+  -- Set colorscheme to use 
+  -- nightfox
+  colorscheme = "nordfox",
+  
+  -- TODO: Not work
+  colorcolumn = 100,
 
   -- Diagnostics configuration (for vim.diagnostics.config({...})) when diagnostics are on
   diagnostics = {
@@ -56,7 +60,7 @@ return {
 
   -- Configure require("lazy").setup() options
   lazy = {
-    defaults = { lazy = true },
+    defaults = { lazy = false },
     performance = {
       rtp = {
         -- customize default disabled vim plugins
@@ -82,4 +86,5 @@ return {
     --   },
     -- }
   end,
+
 }

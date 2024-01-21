@@ -32,9 +32,17 @@ return {
     ["<leader>b"] = { name = "Buffers" },
     -- quick save
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+    ["<C-f>"] = { ":HopChar2<cr>", desc = "Find line" },
+    ["<leader>T"] = {name= "Toggle"},
+    ["<leader>Ta"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"} 
   },
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
+  i = {
+    ["<C-f>"] = { "<esc>:HopChar2<cr>", desc = "Find line", noremap = false, silent = false },
+    ["<C-e>"] = { "<esc>$", desc = "The end of the line" },
+    ["<C-a>"] = { "<esc>^", desc = "The begining of the line" },
+  }
 }

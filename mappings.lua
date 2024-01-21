@@ -34,7 +34,9 @@ return {
     -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
     ["<C-f>"] = { ":HopChar2<cr>", desc = "Find line" },
     ["<leader>T"] = {name= "Toggle"},
-    ["<leader>Ta"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"} 
+    ["<leader>TA"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"},
+    ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
+    ["<leader>TC"] = { ":Cheatsheet<cr>", desc = "Toggle cheatsheet telescope"}
   },
   t = {
     -- setting a mapping to false will disable it

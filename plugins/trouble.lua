@@ -62,7 +62,8 @@ return {
         use_diagnostic_signs = false -- enabling this will use the signs defined in your lsp client
       },
     })
-    vim.keymap.set("n", "<leader>xx", function() require("trouble").toggle() end)
+    local troub = require("trouble")
+    vim.keymap.set("n", "<leader>xx", troub.toggle)
     vim.keymap.set("n", "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end)
     vim.keymap.set("n", "<leader>xd", function() require("trouble").toggle("document_diagnostics") end)
     vim.keymap.set("n", "<leader>xq", function() require("trouble").toggle("quickfix") end)

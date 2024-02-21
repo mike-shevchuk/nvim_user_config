@@ -18,8 +18,9 @@ return {
   },
 
   -- Set colorscheme to use 
-  -- nightfox
-  colorscheme = "nordfox",
+  -- colorscheme = "nordfox",
+-- colorscheme = "nightfox",
+  colorscheme = "onedark",
   
   -- TODO: Not work
   colorcolumn = 100,
@@ -33,9 +34,13 @@ return {
   lsp = {
     -- customize lsp formatting options
     formatting = {
+
+      disabled = {
+        "pylsp",
+      },
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
+        enabled = false, -- enable or disable format on save globally
         allow_filetypes = { -- enable format on save for specified filetypes only
           -- "go",
         },

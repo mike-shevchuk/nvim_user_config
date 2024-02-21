@@ -1,4 +1,4 @@
-return {
+local cheat =  {
   'sudormrfbin/cheatsheet.nvim',
   enabled = true,
   cmd = {'Cheatsheet'},
@@ -15,15 +15,15 @@ return {
       -- Whether to show bundled cheatsheets
 
       -- For generic cheatsheets like default, unicode, nerd-fonts, etc
-      -- bundled_cheatsheets = {
+      bundled_cheatsheets = {
       --     enabled = {},
-      --     disabled = {},
-      -- },
+          disabled = {"nerd-fonts"},
+      },
       bundled_cheatsheets = true,
 
       -- For plugin specific cheatsheets
       bundled_plugin_cheatsheets = {
-          enabled = {"gitsigns.nvim", "telescope.nvim", "auto-session", "vim-easy-align", "vim-sandwich", "goto-preview", "octo.nvim"},
+          -- enabled = {"gitsigns.nvim", "telescope.nvim", "auto-session", "vim-easy-align", "vim-sandwich", "goto-preview", "octo.nvim"},
           -- disabled = {"gitsigns.lua"},
       },
       bundled_plugin_cheatsheets = true,
@@ -43,3 +43,17 @@ return {
     })
   end,
 }
+
+-- local tele_cheat = {
+--     "nvim-telescope/telescope-cheat.nvim",
+--     dependencies = {
+--         "kkharji/sqlite.lua",
+--         "nvim-telescope/telescope.nvim"
+--     }
+-- }
+--
+-- require("astromvim.plugins.telescope").load_extension("cheat")
+
+
+
+return {cheat}

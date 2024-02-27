@@ -9,6 +9,31 @@ return {
   {  "rebelot/kanagawa.nvim"},
   { "folke/lsp-colors.nvim"},
   {
+    'nvim-zh/colorful-winsep.nvim',
+    config = function()
+        local winsep = require("colorful-winsep")
+        -- local bg = require("vscode.colors").get_colors().vscBack
+        winsep.setup({
+           --  highlight = {
+           --      fg = active_bg,
+           --      bg = "#16161E",
+           --      -- bg = bg
+           --  },
+           --  no_exec_files = {"NvimTree", "packer", "TelescopePrompt", "Alpha", "NvimTree"},
+           --  -- Rounded corners gud
+           --  symbols = { "─", "│", "╭", "╮", "╰", "╯" },
+           --   -- Smooth moving switch
+           --  smooth = true,
+           --  anchor = {
+           --    left = { height = 1, x = -1, y = -1 },
+           --    right = { height = 1, x = -1, y = 0 },
+           --    up = { width = 0, x = -1, y = 0 },
+           --    bottom = { width = 0, x = 1, y = 0 },
+           -- },
+        })
+    end
+  },
+  {
     "navarasu/onedark.nvim",
     config = function()
       require('onedark').setup  {

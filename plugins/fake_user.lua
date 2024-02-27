@@ -46,7 +46,8 @@ return {
       end
     },
 
-
+  -- NOTE:Check it
+  { "folke/neodev.nvim", opts = {} },
   {
       "jiaoshijie/undotree",
       dependencies = "nvim-lua/plenary.nvim",

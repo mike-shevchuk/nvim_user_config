@@ -33,6 +33,10 @@ function search_file_telescope(path_arg)
     end
   end
 
+-- create method to delete whitespaces
+function delete_whitespaces()
+  vim.api.nvim_command(":%s/\\s\\+$//e")
+end
 
 return {
   -- first key is the mode
@@ -52,7 +56,13 @@ return {
     
     ["<C-e>"] = { "<esc>A", desc = "The end of the line" },
     ["<C-a>"] = { "<esc>I", desc = "The begining of the line" },
-    ["<leader>3"] = {":Neotree left reveal<cr>", desc = "Change directory"},
+    -- don't show in whichkey
+    ["<leader>3"] = {
+      ":Neotree left reveal<cr>", desc = "Change directory", silent = true, noremap = true
+    },
+
+    ["<leader>md"] = {":NoiceDismiss<cr>", desc = "Dismiss message"},
+
 
     -- mappings seen under group name "Buffer"
     ["<leader>bD"] = {
@@ -82,8 +92,41 @@ return {
       end,
       desc = "Reload nvim"
     },
+    
+    -- tables with the `name` key will be registered with which-key if it's installed
+    -- this is useful for naming menus
+    ["<leader>b"] = { name = "Buffers" },
+    -- quick save
+    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
+      ["<C-f>"] = {":HopChar1<cr>", desc = "Find char", noremap = false, silent = false },
+    -- ["<C-h>"] = { "<esc>:HopWord<cr>", desc = "Find line", noremap = false, silent = false },
+    -- ["<C-f>"] = { "<esc>:HopAnywhere<cr>", desc = "Find line", noremap = false, silent = false },
 
-    ["<leader>TB"] = {
+    ["<leader>T"] = {name= "Toggle"},
+    ["<leader>TA"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"},
+    ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
+    ["<leader>TC"] = { ":Cheatsheet<cr>", desc = "Toggle cheatsheet telescope"},
+    ["<leader>Tt"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
+    ["<leader>Tc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
+    ["<leader>TB"] = { ":DBUIToggle<cr>", desc = "Toggle DBUI"},
+    ["<leader>Tl"] = { desc="Lsp Diagnostic"},
+    ["<leader>Tll"] = { ":ToggleDiag<cr>", desc = "Toggle lsp diagnostics"},
+    ["<Leader>Tlt"] = { ":TroubleToggle<cr>", desc = "Toggle Trouble"},
+
+    ["<leader>Tm"] = { ":MarkdownHeaders<cr>", desc = "MarkdownHeaders"},
+
+    ["<leader>Tn"] = { ":tabnew<cr>", desc = "Tab new"},
+    -- ["<leader>Y"] = {"<cmd>%yank<cr>", desc = "yank entire buffer" },
+    ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
+
+    ["<leader>tt"] = { ":ToggleTerm direction=tab<cr>", desc = "ToggleTerm in new tab"},
+    ["<leader>tj"] = { ":%!jq .<cr>", desc = "Format json"},
+    ["<leader>tw"] = { "delete_whitespaces<cr>", desc = "Delete whitespaces"},
+
+
+    ["<leader>TD"] = {desc = "Debuging"},
+
+    ["<leader>TDD"] = {
       function()
         require("dapui").toggle()
         vim.notify("DAPUI Toggled!", vim.log.levels.INFO)
@@ -91,35 +134,22 @@ return {
       desc = "DAPUI Tooggle"
     },
 
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
-    ["<leader>b"] = { name = "Buffers" },
-    -- quick save
-    -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
-    ["<C-f>"] = { ":HopChar2<cr>", desc = "Find line" },
-    ["<leader>T"] = {name= "Toggle"},
-    ["<leader>TA"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"},
-    ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
-    ["<leader>TC"] = { ":Cheatsheet<cr>", desc = "Toggle cheatsheet telescope"},
-    ["<leader>Tt"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
-    ["<leader>Tc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
-    ["<leader>TD"] = { ":DBUIToggle<cr>", desc = "Toggle DBUI"},
-
-    ["<leader>Tm"] = { ":MarkdownHeaders<cr>", desc = "MarkdownHeaders"},
-
-    ["<leader>Tn"] = { ":tabnew<cr>", desc = "Toggle DBUI"},
-    -- ["<leader>Y"] = {"<cmd>%yank<cr>", desc = "yank entire buffer" },
-    ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
-
-    ["<leader>tt"] = { ":ToggleTerm direction=tab<cr>", desc = "ToggleTerm in new tab"},
-    ["<leader>tl"] = { ":luafile %<cr>", desc = "Run lua file"},
+    ["<leader>TDc"] = { ":lua require'dap'.continue()<cr>", desc = "Continue"},
+    ["<leader>TDo"] = { ":lua require'dap'.step_over()<cr>", desc = "Step over"},
+    ["<leader>TDi"] = { ":lua require'dap'.step_into()<cr>", desc = "Step into"},
+    ["<leader>TDt"] = { ":lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint"},
+    
+    ["<leader>tr"] = { ":RunFile<cr>", desc = "Run cur file"},
+    
     ["<leader>N"] = {name= "Notice"},
 
     -- find files in dir ~/myworld/  
     ["<leader>f."] = {name = "MyWorld"},
     ["<leader>f.c"] = {
       --call function search_file_telescope("$HOME/myworld/live_coding/")
-      "<cmd>lua search_file_telescope('$HOME/myworld/code/live_coding')<cr>",
+        --myworld/code/live_coding/
+      "<cmd>lua search_file_telescope('/home/mike/myworld/code/live_coding')<cr>",
+      -- "<cmd>lua search_file_telescope('~/myworld/code/live_coding/')<cr>",
       -- search_file_telescope("$HOME/myworld/live_coding/"),
       -- lua require('telescope.builtin').live_grep({default_text = " ", search_dirs = { "~/myworld/code/" }})
       desc = "Find my live_coding files",
@@ -135,10 +165,14 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-["<C-t>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    ["<C-t>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    -- swith to another window
+    ["<C-ww>"] = { "<C-\\><C-n><C-ww>", desc = "Switch to another window" },
   },
   i = {
-    ["<C-f>"] = { "<esc>:HopChar2<cr>", desc = "Find line", noremap = false, silent = false },
+    ["<C-f>"] = {":HopChar1<cr>", desc = "Find char", noremap = false, silent = false },
+    -- ["<C-h>"] = { "<esc>:HopWord<cr>", desc = "Find line", noremap = false, silent = false },
+    -- ["<C-w>"] = { "<esc>:HopAnywhere<cr>", desc = "Find line", noremap = false, silent = false },
     -- rewrite method to work with insert mode instead of normal mode 
     ["<C-e>"] = { "<esc>A", desc = "The end of the line" },
     ["<C-a>"] = { "<esc>I", desc = "The begining of the line" },

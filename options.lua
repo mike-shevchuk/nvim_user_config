@@ -13,7 +13,7 @@ return {
 cursorline = true,
     undofile =true,
     termguicolors = true,
-    colorcolumn = "80",
+    colorcolumn = "100",
     -- cmdheight = 2, -- cmdheight 0 when cmdheight 
   },
   g = {

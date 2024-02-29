@@ -104,10 +104,14 @@ return {
 
     ["<leader>T"] = {name= "Toggle"},
     ["<leader>TA"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"},
-    ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
+    -- ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
     ["<leader>TC"] = { ":Cheatsheet<cr>", desc = "Toggle cheatsheet telescope"},
-    ["<leader>Tt"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
-    ["<leader>Tc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
+   
+    ["<leader>TT"] = { ":TroubleToggle<cr>", desc = "TroubleToggle"},
+    ["<leader>Tc"] = { desc="Calendar and time"},
+    ["<leader>Tct"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
+    ["<leader>Tcc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
+    
     ["<leader>TB"] = { ":DBUIToggle<cr>", desc = "Toggle DBUI"},
     ["<leader>Tl"] = { desc="Lsp Diagnostic"},
     ["<leader>Tll"] = { ":ToggleDiag<cr>", desc = "Toggle lsp diagnostics"},
@@ -117,7 +121,6 @@ return {
 
     ["<leader>Tn"] = { ":tabnew<cr>", desc = "Tab new"},
     -- ["<leader>Y"] = {"<cmd>%yank<cr>", desc = "yank entire buffer" },
-    ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
 
     ["<leader>tt"] = { ":ToggleTerm direction=tab<cr>", desc = "ToggleTerm in new tab"},
     ["<leader>tj"] = { ":%!jq .<cr>", desc = "Format json"},
@@ -138,13 +141,19 @@ return {
     ["<leader>TDo"] = { ":lua require'dap'.step_over()<cr>", desc = "Step over"},
     ["<leader>TDi"] = { ":lua require'dap'.step_into()<cr>", desc = "Step into"},
     ["<leader>TDt"] = { ":lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint"},
-    
+
+    ["<leader>Tg"] = {desc = "GptChat"},
+    ["<leader>Tgt"] = { ":GpChatToggle<cr>", desc = "Toggle chat"},
+    ["<leader>Tgg"] = { ":GpChatRespond<cr>", desc = "Respond chat"},
+
     ["<leader>tr"] = { ":RunFile<cr>", desc = "Run cur file"},
     
     ["<leader>N"] = {name= "Notice"},
 
     -- find files in dir ~/myworld/  
     ["<leader>f."] = {name = "MyWorld"},
+    -- ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
+    ["<leader>fs"] = {":Spectre<cr>", desc = "Replace characters"},
     ["<leader>f.c"] = {
       --call function search_file_telescope("$HOME/myworld/live_coding/")
         --myworld/code/live_coding/

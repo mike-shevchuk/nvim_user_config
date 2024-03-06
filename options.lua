@@ -2,7 +2,7 @@
 return {
   opt = {
     -- set to true or false etc.
-    relativenumber = false, -- sets vim.opt.relativenumber
+    relativenumber = true, -- sets vim.opt.relativenumber
     number = true, -- sets vim.opt.number
     spell = false, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
@@ -10,10 +10,12 @@ return {
     tabstop = 2,
     softtabstop = 2,
     shiftwidth = 2,
-cursorline = true,
+    cursorline = true,
     undofile =true,
     termguicolors = true,
     colorcolumn = "100",
+    -- Minimal number of screen lines to keep above and below the cursor.
+    scrolloff = 10
     -- cmdheight = 2, -- cmdheight 0 when cmdheight 
   },
   g = {

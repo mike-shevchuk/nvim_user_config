@@ -120,6 +120,7 @@ return {
     'xiyaowong/transparent.nvim',
     config = function()
       require('transparent').setup({
+        enable = false,
         -- NOTE:Case 1
         -- enable = true, -- boolean: enable transparent
         -- extra_groups = { -- table/string: additional groups that should be cleared
@@ -145,6 +146,11 @@ return {
     })
     vim.cmd('TransparentDisable')
   end
+  },
+
+  {
+    "SmiteshP/nvim-navic",
+    dependencies = "neovim/nvim-lspconfig",
   },
 
   { "CRAG666/code_runner.nvim", config = true },
@@ -206,6 +212,20 @@ return {
   },
 
   { 
+    'gen740/SmoothCursor.nvim',
+    config = function()
+      require('smoothcursor').setup({
+        type='matrix',
+        cursor = require('smoothcursor.matrix_chars'),              -- Cursor shape (requires Nerd Font). Disabled in fancy mode.:HopChar1
+        texthl = "SmoothCursorGreen",   -- Highlight group. Default is { bg = nil, fg = "#FFD400" }. Disabled in fancy mode.
+        linehl = nil,              -- Highlights the line under the cursor, similar to 'cursorline'. "CursorLine" is recommended. Disabled in fancy mode.
+        speed = 40,
+        threshold = 1,              -- Animate only if cursor moves more than this many lines
+      })
+    end,
+  },
+
+  { 
     'willthbill/opener.nvim',
     config = function()
       require('telescope').load_extension("opener")
@@ -214,7 +234,7 @@ return {
           opener = {
             use_telescope = true,
             hidden = true, -- do not show hidden directories
-            root_dir = "~", -- search from home directory by default
+            root_dir = "$HOME", -- search from home directory by default
             -- respect_gitignore = true, -- respect .gitignore files
           }
         }
@@ -273,13 +293,13 @@ return {
       require("illuminate").configure()
       vim.api.nvim_set_keymap(
       "n",
-      "<C-n>",
+      "<leader>tN",
       ':lua require("illuminate").goto_next_reference()<CR>',
       { silent = true, noremap = true }
       )
       vim.api.nvim_set_keymap(
       "n",
-      "<C-N>",
+      "<leader>P",
       ':lua require("illuminate").goto_prev_reference()<CR>',
       { silent = true, noremap = true }
       )

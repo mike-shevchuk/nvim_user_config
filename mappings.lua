@@ -174,9 +174,13 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-    ["<C-t>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    ["<C-b>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    -- create hotkey to switch to normal mode
+    ["<C-n>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    -- create hotkey to toggle between normal and terminal mode
+    ["<C-t>"] = { "<C-\\><C-n>:ToggleTermAll<cr>", desc = "Toggle terminal mode" },
     -- swith to another window
-    ["<C-ww>"] = { "<C-\\><C-n><C-ww>", desc = "Switch to another window" },
+    -- ["<C-ww>"] = { "<C-\\><C-n><C-ww>", desc = "Switch to another window" },
   },
   i = {
     ["<C-f>"] = {":HopChar1<cr>", desc = "Find char", noremap = false, silent = false },

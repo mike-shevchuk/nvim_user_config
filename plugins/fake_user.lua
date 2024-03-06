@@ -6,6 +6,16 @@ return {
     end,
   },
 
+  {
+  "mawillcockson/font-resize.nvim",
+    dependencies = {
+      "rcarriga/nvim-notify",
+    },
+    configure = function()
+      require("font-resize").setup()
+    end,
+  },
+
   -- {
     --   'wellle/context.vim',
     --   config = function()

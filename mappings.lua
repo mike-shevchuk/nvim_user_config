@@ -144,7 +144,7 @@ return {
 
     ["<leader>Tg"] = {desc = "GptChat"},
     ["<leader>Tgt"] = { ":GpChatToggle<cr>", desc = "Toggle chat"},
-    ["<leader>Tgg"] = { ":GpChatRespond<cr>", desc = "Respond chat"},
+    ["<leader>Tgg"] = { ":GpChatFinder<cr>", desc = "Respond chat"},
 
     ["<leader>tr"] = { ":RunFile<cr>", desc = "Run cur file"},
     

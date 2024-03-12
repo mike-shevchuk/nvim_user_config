@@ -26,7 +26,7 @@ You can also just clone this repository directly if you do not want to track you
 #### Clone the repository
 
 ```shell
-git clone https://github.com/mike-shevchuk/nvim_user_config ~/.config/nvim/lua/user
+git clone https://github.com/mike-shevchuk/nvim_user_config.git ~/.config/nvim/lua/user
 ```
 
 #### Start Neovim

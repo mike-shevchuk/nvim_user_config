@@ -104,10 +104,14 @@ return {
 
     ["<leader>T"] = {name= "Toggle"},
     ["<leader>TA"] = { ":AerialToggle<cr>", desc = "Aerial for navigation"},
-    ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
+    -- ["<leader>TT"] = { ":Telekasten<cr>", desc = "Toggle terminal"},
     ["<leader>TC"] = { ":Cheatsheet<cr>", desc = "Toggle cheatsheet telescope"},
-    ["<leader>Tt"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
-    ["<leader>Tc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
+   
+    ["<leader>TT"] = { ":TroubleToggle<cr>", desc = "TroubleToggle"},
+    ["<leader>Tc"] = { desc="Calendar and time"},
+    ["<leader>Tct"] = { ":Calendar -view=clock <cr>", desc = "Toggle clock"},
+    ["<leader>Tcc"] = { ":Calendar<cr>", desc = "Toggle Calendar"},
+    
     ["<leader>TB"] = { ":DBUIToggle<cr>", desc = "Toggle DBUI"},
     ["<leader>Tl"] = { desc="Lsp Diagnostic"},
     ["<leader>Tll"] = { ":ToggleDiag<cr>", desc = "Toggle lsp diagnostics"},
@@ -117,7 +121,6 @@ return {
 
     ["<leader>Tn"] = { ":tabnew<cr>", desc = "Tab new"},
     -- ["<leader>Y"] = {"<cmd>%yank<cr>", desc = "yank entire buffer" },
-    ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
 
     ["<leader>tt"] = { ":ToggleTerm direction=tab<cr>", desc = "ToggleTerm in new tab"},
     ["<leader>tj"] = { ":%!jq .<cr>", desc = "Format json"},
@@ -138,13 +141,19 @@ return {
     ["<leader>TDo"] = { ":lua require'dap'.step_over()<cr>", desc = "Step over"},
     ["<leader>TDi"] = { ":lua require'dap'.step_into()<cr>", desc = "Step into"},
     ["<leader>TDt"] = { ":lua require'dap'.toggle_breakpoint()<cr>", desc = "Toggle breakpoint"},
-    
+
+    ["<leader>Tg"] = {desc = "GptChat"},
+    ["<leader>Tgt"] = { ":GpChatToggle<cr>", desc = "Toggle chat"},
+    ["<leader>Tgg"] = { ":GpChatFinder<cr>", desc = "Respond chat"},
+
     ["<leader>tr"] = { ":RunFile<cr>", desc = "Run cur file"},
     
     ["<leader>N"] = {name= "Notice"},
 
     -- find files in dir ~/myworld/  
     ["<leader>f."] = {name = "MyWorld"},
+    -- ["<leader>fp"] = { ":Telescope live_grep search_dir='~/myworld/live_coding/'<cr>", desc = "Search files in live_codding"},
+    ["<leader>fs"] = {":Spectre<cr>", desc = "Replace characters"},
     ["<leader>f.c"] = {
       --call function search_file_telescope("$HOME/myworld/live_coding/")
         --myworld/code/live_coding/
@@ -165,9 +174,13 @@ return {
   t = {
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
-    ["<C-t>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    ["<C-b>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    -- create hotkey to switch to normal mode
+    ["<C-n>"] = { "<C-\\><C-n><cr>", desc = "Escape terminal mode" },
+    -- create hotkey to toggle between normal and terminal mode
+    ["<C-t>"] = { "<C-\\><C-n>:ToggleTermAll<cr>", desc = "Toggle terminal mode" },
     -- swith to another window
-    ["<C-ww>"] = { "<C-\\><C-n><C-ww>", desc = "Switch to another window" },
+    -- ["<C-ww>"] = { "<C-\\><C-n><C-ww>", desc = "Switch to another window" },
   },
   i = {
     ["<C-f>"] = {":HopChar1<cr>", desc = "Find char", noremap = false, silent = false },

@@ -12,7 +12,6 @@ local gpt4 = {
       require("chatgpt").setup({
       api_key_cmd = "bw get notes openai",
       -- api_key_cmd = {"bw", "get", "notes", "openai"},
-      -- api_key_cmd = "echo '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'",
       openai_params = {
           model = "gpt-3.5-turbo-instruct",
           max_tokens = 8192,
@@ -42,4 +41,26 @@ local gpt3 = {
 	end,
 }
 
-return {gpt4, gpt3}
+
+local codeium_nvim = {
+    "Exafunction/codeium.nvim",
+    -- event = "BufEnter",
+    -- enable = true,
+    -- lazzy = false,
+    dependencies = {
+        "nvim-lua/plenary.nvim",
+        "hrsh7th/nvim-cmp",
+    },
+    config = function()
+        require("codeium").setup({})
+    end,
+}
+
+local codeium_vim =  {
+    'Exafunction/codeium.vim',
+    event = 'BufEnter'
+}
+
+
+
+return {gpt4, gpt3, codeium_nvim, codeium_vim}
